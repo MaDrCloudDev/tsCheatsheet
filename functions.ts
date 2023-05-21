@@ -1,4 +1,4 @@
-//
+// Functions
 
 // return type
 //`: number` specifies this function returns a number

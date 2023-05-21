@@ -6,7 +6,7 @@ const car: { maker: string; model: string; year: number } = {
 	year: 2008,
 };
 
-// Infered type
+// infered type
 // Type inferred from type used above
 car.maker = 'Ford'; // no error
 car.maker = 2; // Error: Type 'number' is not assignable to type 'string'.

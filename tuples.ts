@@ -1,4 +1,4 @@
-// Typed Arrays
+// Tuples: Typed Arrays
 
 // define tuple
 let aTuple: [number, boolean, string];

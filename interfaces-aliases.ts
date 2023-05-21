@@ -1,4 +1,4 @@
-//
+// Interfaces & Aliases
 
 // type aliases
 type VehicleYear = number;

@@ -38,6 +38,7 @@ console.log(LeetCodes.E);
 console.log(LeetCodes.A);
 
 // string enums
+
 enum Compass3 {
 	North = 'North',
 	East = 'East',

@@ -1,6 +1,5 @@
 // Casting Types
 
-//
 let a: unknown = 'Hello World!';
 console.log((a as string).length);
 
