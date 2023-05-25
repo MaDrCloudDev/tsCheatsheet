@@ -1,0 +1,45 @@
+# Tuples: Typed Arrays
+
+## Define Tuple
+
+```ts copy
+let aTuple: [number, boolean, string];
+
+// initialize correctly
+aTuple = [3, true, 'Hello World!'];
+
+// initialize incorrectly; throws an error
+// aTuple = [true, 'Hello Wold!', 3];
+```
+
+## Readonly Tuple
+
+```ts copy
+// We have no type safety in our tuple for indexes 3+
+aTuple.push('added after initialization');
+console.log(aTuple);
+
+// define readonly tuple
+const aReadonlyTuple: readonly [number, boolean, string] = [
+	3,
+	true,
+	'Hello World!',
+];
+// throws error as it is readonly.
+aReadonlyTuple.push('added after initialization');
+```
+
+## Named Tuples
+
+```ts copy
+const graph: [x: number, y: number] = [51.0, 49.0];
+```
+
+## Destructuring Tuples
+
+```ts copy
+const graph2: [number, number] = [51.0, 49.0];
+const [x, y] = graph;
+```
+
+---
