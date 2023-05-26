@@ -1,0 +1,89 @@
+# Utility Types
+
+## Partial - makes all properties in an object optional
+
+```ts copy
+interface Coords {
+	x: number;
+	y: number;
+}
+
+let coordsPart: Partial<Coords> = {}; // `Partial` allows x and y to
+// be optional
+coordsPart.x = 10;
+```
+
+## Required - makes all properties in an object required
+
+```ts copy
+interface Vehicle {
+	make: string;
+	model: string;
+	mileage?: number;
+}
+
+let myCar: Required<Vehicle> = {
+	make: 'Honda',
+	model: 'Civic',
+	mileage: 30000, // `Required` forces mileage to be defined
+};
+```
+
+## Record - creates an object type whose property keys are Keys and whose property values are Type
+
+```ts copy
+const ageNameMap: Record<string, number> = {
+	Matt: 20,
+	Michael: 24,
+};
+//`Record<string, number>` is equivalent to `{ [key: string]: number }`
+```
+
+## Omit - constructs a type by picking all properties from Type and then removing Keys
+
+```ts copy
+interface Employee {
+	name: string;
+	age: number;
+	location?: string;
+}
+
+const matt: Omit<Employee, 'age' | 'location'> = {
+	name: 'Matt', // `Omit` has removed age and location from the type
+	// and they can't be defined here
+};
+```
+
+## Pick - constructs a type by picking the set of properties Keys from Type (the opposite of `Omit`)
+
+```ts copy
+const Michael: Pick<Employee, 'name'> = {
+	name: 'Michael', // `Pick` has only kept name, so age and location
+	// were removed from the type and they can't be defined here
+};
+```
+
+## Exclude - removes types from a union
+
+```ts copy
+type Primitive = string | number | boolean;
+const value3: Exclude<Primitive, string> = true; // a string cannot
+// be used here since Exclude removed it from the type.
+
+// return type - extracts return type from a function type
+type CoordGenerator = () => { x: number; y: number };
+const coord: ReturnType<CoordGenerator> = {
+	x: 10,
+	y: 20,
+};
+```
+
+## Parameters - extracts the parameters of a function type (as an array)
+
+```ts copy
+type CoordPrinter = (p: { x: number; y: number }) => void;
+const coord2: Parameters<CoordPrinter>[0] = {
+	x: 10,
+	y: 20,
+};
+```

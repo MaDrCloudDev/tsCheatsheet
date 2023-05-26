@@ -1,0 +1,23 @@
+# Union Types
+
+## Union with or |
+
+```ts copy
+function logStatusCode(code: string | number) {
+	console.log(`Status code: ${code}.`);
+}
+logStatusCode(404);
+logStatusCode('404');
+```
+
+## Union Type Errors
+
+```ts copy
+function logStatusCode2(code: string | number) {
+	console.log(`Status code: ${code.toUpperCase()}.`);
+	// error: Property 'toUpperCase' does not exist on type
+	// 'string | number'.
+}
+```
+
+---
