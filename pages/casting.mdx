@@ -1,17 +1,23 @@
 ## Casting Types
 
+Casting overrides the variable type
+
+## Casting using as
+
 ```ts copy
 let a: unknown = 'Hello World!';
 console.log((a as string).length);
+```
 
-// Casting doesn't really change type, it just tells
-// the compiler to treat it as a different type
+Casting doesn't really change type, it tells the compiler to treat it as a different type
+
+```ts copy
 let a2: unknown = 3;
 console.log((a2 as string).length); // logs undefined
 // because numbers don't have a length
 ```
 
-## TypeScript typechecks casts
+## TypeScript Typechecks Casts
 
 ```ts copy
 console.log((3 as string).length); // Error: Conversion
@@ -21,19 +27,23 @@ console.log((3 as string).length); // Error: Conversion
 // to 'unknown' first.
 ```
 
-## Casting using &lt;&gt;; doesn't work in TSX
+## Casting using &lt;&gt;
+
+_Note:_ doesn't work in TSX
 
 ```ts copy
 let a3: unknown = 'Hello World!';
-console.log((<string>a).length);
+console.log((<string>a3).length);
 ```
 
 ## Forced casting
 
+You can force cast to any type by casting to unknown, then to the type you want
+
 ```ts copy
 let a4 = 'Hello World!';
 console.log((a4 as unknown as number).length); // a is not
-// actually a number so returns undefined
+// really a number so returns undefined
 ```
 
 ---
