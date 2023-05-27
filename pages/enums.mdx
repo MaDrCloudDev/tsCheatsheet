@@ -1,6 +1,10 @@
 # Enums
 
+Special classes representing groups of constants
+
 ## Numeric enums; default
+
+By default, enums are numeric, starting at 0, and incrementing by 1
 
 ```ts copy
 enum Compass {
@@ -10,9 +14,10 @@ enum Compass {
 	West,
 }
 let currentDirection = Compass.North;
-// logs 0
-console.log(currentDirection);
-// throws error as 'North' is not a valid enum
+
+console.log(currentDirection); // North is the first value
+// so it logs '0'
+
 currentDirection = 'North'; // Error: "North" is not assignable
 // to type 'Compass'.
 ```
@@ -26,10 +31,10 @@ enum Compass2 {
 	South,
 	West,
 }
-// logs 1
-console.log(Compass2.North);
-// logs 3
-console.log(Compass2.South);
+
+console.log(Compass2.North); // logs 1
+
+console.log(Compass2.South); // logs 3
 ```
 
 ## Initialized numeric enums fully set up
@@ -41,10 +46,10 @@ enum LeetCodes {
 	S = 5,
 	A = 4,
 }
-// logs 3
-console.log(LeetCodes.E);
-// logs 4
-console.log(LeetCodes.A);
+
+console.log(LeetCodes.E); // logs 3
+
+console.log(LeetCodes.A); // logs 4
 ```
 
 ## String enums
@@ -56,10 +61,10 @@ enum Compass3 {
 	South = 'South',
 	West = 'West',
 }
-// logs "North"
-console.log(Compass3.North);
-// logs "South"
-console.log(Compass3.South);
+
+console.log(Compass3.North); // logs "North"
+
+console.log(Compass3.South); // logs "South"
 ```
 
 ---
