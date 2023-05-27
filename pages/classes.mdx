@@ -4,14 +4,20 @@
 
 ```ts copy
 class Pet {
-	name: string;
+	name: string; // property
 }
 
 const pet = new Pet();
-pet.name = 'Buttons';
+pet.name = 'Mittens';
 ```
 
 ## Member Visibility
+
+Member properties can be public, private, or protected.
+
+- Public members are accessible from anywhere (default).
+- Private members are only accessible from within the class.
+- Protected members are accessible from within the class and from classes that extend from the class.
 
 ```ts copy
 class Pet2 {
@@ -27,10 +33,13 @@ class Pet2 {
 }
 
 const pet2 = new Pet2('Snuggles');
-console.log(pet2.getName()); // person.name isn't accessible from outside the class since it's private
+console.log(pet2.getName()); // person.name isn't accessible
+// from outside the class since it's private
 ```
 
 ## Parameter Properties
+
+In TypeScript, you can conveniently define class members in the constructor by adding visibility modifiers to the constructor parameters. This allows you to automatically create and initialize class properties with a concise syntax.
 
 ```ts copy
 class Pet3 {
@@ -43,7 +52,7 @@ class Pet3 {
 }
 
 const pet3 = new Pet3('Snowball');
-console.log(pet3.getName());
+console.log(pet3.getName()); // logs 'Snowball'
 ```
 
 ## Readonly
@@ -53,7 +62,8 @@ class Pet4 {
 	private readonly name: string;
 
 	public constructor(name: string) {
-		// name cannot be changed after this first definition, which must be at it's declaration or in the constructor.
+		// name cannot be changed after this first definition,
+		// which must be at it's declaration or in the constructor.
 		this.name = name;
 	}
 
@@ -67,6 +77,8 @@ console.log(pet4.getName());
 ```
 
 ## Inheritance - implements
+
+The implements key word is used to indicate that a class implements an interface to define the type a class must conform to.
 
 ```ts copy
 interface Shape {
@@ -87,6 +99,8 @@ class Rectangle implements Shape {
 
 ## Inheritance - extends (extends Rectangle above)
 
+A class can extend another class to inherit its members. A class can only extend one other class.
+
 ```ts copy
 interface Shape {
 	getArea: () => number;
@@ -101,13 +115,16 @@ class Square extends Rectangle {
 
 ## Override
 
+When you use a class to extend another, you can override methods from the parent class by redefining them in the child class. You can also override properties.
+
 ```ts copy
 interface Shape {
 	getArea: () => number;
 }
 
 class Rectangle2 implements Shape {
-	// using protected for these members allows access from classes that extend from this class, such as Square
+	// using protected for these members allows access from
+	// classes that extend from this class, such as Square
 	public constructor(
 		protected readonly width: number,
 		protected readonly height: number
@@ -134,6 +151,8 @@ class Square2 extends Rectangle2 {
 ```
 
 ## Abstract Classes
+
+Can be used as a base for other classes, without having to implement or use all that classes members.
 
 ```ts copy
 abstract class Polygon {
