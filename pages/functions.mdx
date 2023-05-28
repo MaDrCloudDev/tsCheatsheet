@@ -9,18 +9,22 @@ function getTime(): number {
 }
 ```
 
-## Return void type; doesn't return any value
+## Return type void; doesn't return any value
 
 ```ts copy
 function printString(): void {
-	console.log('Hello World!');
+	console.log('Hello World!'); // prints "Hello World!"
+	// but doens't return any value
 }
 ```
 
 ## Parameters
 
+Function parameters can be typed, but they can also be inferred
+
 ```ts copy
 function add(a: number, b: number) {
+	// typed parameters
 	return a + b;
 }
 ```
@@ -32,17 +36,23 @@ function add(a: number, b: number) {
 function multiply(x: number, y: number, z?: number) {
 	return x + y + (z || 0);
 }
+console.log(add(3, 6)); // 9 since we didn't pass a `z`
+console.log(add(3, 6, 9)); // 18 since we passed a `z`
 ```
 
-## Default Parameters; type can also be inferred
+## Default Parameters
 
 ```ts copy
 function pow(value: number, exponent: number = 4) {
-return value \*\* exponent;
+	return value ** exponent;
 }
 ```
 
+The type can also be inferred from the default value
+
 ## Named Parameters
+
+Same as typing regualr parameters, but with an object
 
 ```ts copy
 function divide({ dividend, divisor }: { dividend: number; divisor: number }) {
@@ -52,6 +62,8 @@ function divide({ dividend, divisor }: { dividend: number; divisor: number }) {
 
 ## Rest Parameters
 
+Same as typing regular parameters, but with an array
+
 ```ts copy
 function subtract(x: number, y: number, ...rest: number[]) {
 	console.log(x - y - rest.reduce((a, b) => a - b, 0));
@@ -60,14 +72,14 @@ function subtract(x: number, y: number, ...rest: number[]) {
 subtract(1, 2, 3, 4, 5);
 ```
 
-## Type Aliased
+## Type Aliases
 
 ```ts copy
 type Aliased = (value: number) => number;
 
 // For this function, parameter `value` is automatically assigned
 // type `number` from type `Aliased`
-const aliasFunction: Aliased = (value) => value \* -1;
+const aliasedFunction: Aliased = (value) => value \* -1;
 ```
 
 ---
