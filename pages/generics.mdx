@@ -5,34 +5,36 @@ Generics enable the creation of "type variables" that facilitate the development
 ## Functions
 
 ```ts copy
-function createPair<S, T>(varStr: S, varNum: T): [S, T] {
+function makePair<S, T>(varStr: S, varNum: T): [S, T] {
 	return [varStr, varNum];
 }
-console.log(
-	createPair<string, number>('This is your string, your num is:', 42)
-); // [ 'This is your string, your num is:', 42 ]
+console.log(makePair<string, number>('This is your string, your num is:', 42));
+// [ 'This is your string, your num is:', 42 ]
 ```
+
+Types can also be inferred:
 
 ## Classes
 
+Genreics can be used to create classes with generalized properties and methods.
+
 ```ts copy
 class NamedValue<T> {
-private \_value: T | undefined;
+	private _value: T | undefined;
 
-    constructor(private name: string) {}
+	constructor(private name: string) {}
 
-    public setValue(value: T) {
-    	this._value = value;
-    }
+	public setValue(value: T) {
+		this._value = value;
+	}
 
-    public getValue(): T | undefined {
-    	return this._value;
-    }
+	public getValue(): T | undefined {
+		return this._value;
+	}
 
-    public toString(): string {
-    	return `${this.name}: ${this._value}`;
-    }
-
+	public toString(): string {
+		return `${this.name}: ${this._value}`;
+	}
 }
 
 let value = new NamedValue<number>('withNumber');
@@ -40,16 +42,22 @@ value.setValue(11);
 console.log(value.toString()); // withNumber: 11
 ```
 
+If used in a constructor paramter the type can be inferred:
+
 ## Type aliases
+
+Create reusable types with generics in type aliases.
 
 ```ts copy
 type Wrapped<T> = { value: T };
 
 const wrappedValue: Wrapped<number> = { value: 11 };
-// works with interfaces with syntax: `interface Wrapped<T> {`
+// also works with interfaces using syntax: `interface Wrapped<T> {`
 ```
 
 ## Default Value
+
+Assign default values to generics. These apply if no other type is inferred or specified.
 
 ```ts copy
 class NamedValue2<T = string> {
@@ -77,6 +85,8 @@ console.log(value2.toString()); // myNumber: myValue
 ```
 
 ## Extends
+
+You can put constraints on the types that can be used with generics by using the `extends` keyword. Allows for more speicific typing. Works along with default values.
 
 ```ts copy
 function createLoggedPair<S extends string | number, T extends string | number>(
