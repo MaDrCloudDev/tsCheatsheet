@@ -1,31 +1,35 @@
 # Keyof
 
-`keyof` is a keyword in TypeScript used to extract the key type from an object type. when used on an object type with explicit keys, `keyof` creates a union type with them
+the `keyof` keyword is utilized to extract the type of keys from an object type. When applied to an object type that has explicit keys, `keyof` generates a union type encompassing those keys.
 
 ```ts copy
 interface Employee {
 	name: string;
 	age: number;
 }
-// `keyof Person` here creates a union type of "name" and "age",
-// other strings will not be allowed
+
 function printEmployeeProperty(employee: Employee, property: keyof Employee) {
 	console.log(
 		`Printing employee property ${property}: "${employee[property]}"`
 	);
 }
+// `keyof Employee` here creates a union type of "name" and "age",
+// other strings will not be allowed
 let employee = {
 	name: 'Matt',
 	age: 30,
 };
-printEmployeeProperty(employee, 'name'); // Printing employee property name: "Matt"
+printEmployeeProperty(employee, 'name'); // Printing employee
+// property name: "Matt"
 ```
 
-## With index signatures - `keyof` can also be used with index signatures to extract the index type.
+## `keyof` using index signatures
+
+the `keyof` keyword can also be employed with index signatures to extract the type of indexes.
 
 ```ts copy
 type StringMap = { [key: string]: unknown };
-// `keyof StringMap` resolves to `string` here
+// Here, `keyof StringMap` resolves to a `string`
 function createStringPair(property: keyof StringMap, value: string): StringMap {
 	return { [property]: value };
 }
