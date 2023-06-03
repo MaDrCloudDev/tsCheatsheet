@@ -1,5 +1,10 @@
 {
-	"index": "typeScriptCheatSheet",
+	"index": {
+		"title": "typeScriptCheatsheet",
+		"theme": {
+			"toc": false
+		}
+	},
 	"contact": {
 		"title": "Contact ↗",
 		"type": "page",

@@ -9,6 +9,12 @@ const config: DocsThemeConfig = {
 		link: 'https://github.com/madrclouddev/typeScriptCheatSheet',
 		icon: <img src='/madrlogo.svg' />,
 	},
+	editLink: {
+		text: false,
+	},
+	feedback: {
+		content: false,
+	},
 	head: () => {
 		const { asPath, defaultLocale, locale } = useRouter();
 		const { frontMatter } = useConfig();
