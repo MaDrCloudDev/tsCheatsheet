@@ -1,6 +1,10 @@
 ## Interfaces & Aliases
 
+Use interfaces and aliases to define types separately from the implementation of variables themselves. This allows you to reuse types across multiple variables and objects. Interfaces are used to define object types, while aliases can be used to define any type.
+
 ## Type Aliases
+
+Define types with custom names. Can be used to define any type, such as primitives, arrays, and objects.
 
 ```ts copy
 type VehicleYear = number;
@@ -24,6 +28,8 @@ const vehicle: Vehicle = {
 
 ## Interfaces
 
+Interfaces can only be used to define object types.
+
 ```ts copy
 interface Rectangle {
 	height: number;
@@ -34,8 +40,13 @@ const rectangle: Rectangle = {
 	height: 22,
 	width: 11,
 };
+```
 
-// extending interfaces
+## Extending Interfaces
+
+Interfaces can be used to extend other interfaces. This allows you to reuse common properties across multiple interfaces.
+
+```ts copy
 interface Rectangle {
 	height: number;
 	width: number;
