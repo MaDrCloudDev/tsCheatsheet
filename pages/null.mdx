@@ -48,8 +48,13 @@ function printDistance(distance: number | null | undefined) {
 
 printDistance(null); // Prints 'Distance: Unavailable'
 printDistance(0); // Prints 'Distance: 0'
+```
 
-// null assertions - using ! to tell the compiler to ignore null
+## Null assertions
+
+Using ! to tell the compiler to ignore null
+
+```ts copy
 // or undefined
 function getValue(): string | undefined {
 	return 'Hello World!';
@@ -58,10 +63,14 @@ let value2 = getValue();
 console.log('value2 length: ' + value2!.length);
 ```
 
-## Array Bounds Handling - TypeScript assumes array access never returns null or undefined (unless defined as part of the array type)
+This is unsafe!
+
+## Array Bounds Handling
+
+TypeScript assumes array access never returns null or undefined (unless undefined is part of the array type).
 
 ```ts copy
 let array: number[] = [1, 2, 3];
-let value3 = array[0]; // with `noUncheckedIndexedAccess` this has
-// the type `number | undefined`
+let value3 = array[0]; // with `noUncheckedIndexedAccess` this
+// has the type `number | undefined`
 ```
