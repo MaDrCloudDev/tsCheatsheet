@@ -1,6 +1,8 @@
 # Null
 
-## Types - null and undefined are primitive types (tsconfig.json must have "strictNullChecks": true)
+null and undefined are primitive types (set tsconfig.json - "strictNullChecks": true; disabled by default)
+
+## Types
 
 ```ts copy
 let value: string | undefined | null = null;
@@ -8,7 +10,9 @@ value = 'Hello World!';
 value = undefined;
 ```
 
-## Optional - optional chaining with ?. allows us to access properties on an object that may be null or undefined
+## Optional
+
+Optional chaining with `?.` allows us to access properties on an object that may be null or undefined
 
 ```ts copy
 interface Warehouse {
@@ -33,7 +37,9 @@ let workspace: Warehouse = {
 printYardSize(workspace); // Prints 'No yard'
 ```
 
-## Nullish Coalescence - writing expressions that have a fallback value when null or undefined is encountered
+## Nullish Coalescence
+
+Writing expressions that have a fallback value when null or undefined is encountered
 
 ```ts copy
 function printDistance(distance: number | null | undefined) {
