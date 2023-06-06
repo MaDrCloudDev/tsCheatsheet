@@ -1,4 +1,6 @@
-# Tuples: Typed Arrays
+# Tuples
+
+Typed arrays.
 
 ## Define Tuple
 
@@ -8,16 +10,18 @@ let aTuple: [number, boolean, string];
 // initialize correctly
 aTuple = [3, true, 'Hello World!'];
 
-// initialize incorrectly; throws an error
-// aTuple = [true, 'Hello Wold!', 3];
+// initialize incorrectly; throws an error;
+// order of types must match
+aTuple = [true, 'Hello Wold!', 3];
 ```
 
 ## Readonly Tuple
 
 ```ts copy
-// We have no type safety in our tuple for indexes 3+
+// We have no type safety in our  previous tuple for
+// array indices 3+
 aTuple.push('added after initialization');
-console.log(aTuple);
+console.log(aTuple); // works because it isn't readonly
 
 // define readonly tuple
 const aReadonlyTuple: readonly [number, boolean, string] = [
@@ -25,17 +29,22 @@ const aReadonlyTuple: readonly [number, boolean, string] = [
 	true,
 	'Hello World!',
 ];
-// throws error as it is readonly.
+
 aReadonlyTuple.push('added after initialization');
+// throws error as it is readonly.
 ```
 
 ## Named Tuples
+
+Named tuples give us better context.
 
 ```ts copy
 const graph: [x: number, y: number] = [51.0, 49.0];
 ```
 
 ## Destructuring Tuples
+
+Tuples are arrays and they can be destructured as such.
 
 ```ts copy
 const graph2: [number, number] = [51.0, 49.0];
