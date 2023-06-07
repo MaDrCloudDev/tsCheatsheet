@@ -1,5 +1,11 @@
 # Types
 
+## Main Primitives
+
+- Boolean
+- Number
+- String
+
 ## Explicit
 
 ```ts copy
@@ -12,7 +18,11 @@ let firstName: string = 'Matt';
 let firstName = 'Matt';
 ```
 
+In some cases, type can be inferred from the value.
+
 ## Any
+
+Disables type checking. Unsafe.
 
 ```ts copy
 let x = true;
@@ -21,12 +31,15 @@ x = 'string'; // Error: Type 'string' is not assignable
 Math.round(x); // Error: Argument of type 'boolean' is
 // not assignable to parameter of type 'number'.
 
+// Now with any
 let y: any = true;
 y = 'string'; // no error; can be "any" type
 Math.round(y); // no error; can be "any" type
 ```
 
 ## Unknown
+
+Kind of like any, but not as unsafe. Better to use unknown over any if you don't know the type.
 
 ```ts copy
 let z: unknown = 1;
@@ -50,16 +63,22 @@ if (typeof z === 'object' && z !== null) {
 
 ## Never
 
+Forces an error.
+
 ```ts copy
-let a: never = true; // Error: Type 'boolean' is not
+let a: never = false; // Error: Type 'boolean' is not
 // assignable to type 'never'.
 ```
 
 ## Null & Undefined
 
+Primitives in JS, but also types in TS.
+
 ```ts copy
 let b: undefined = undefined;
 let c: null = null;
 ```
+
+strictNullChecks must be enabled in tsconfig.json
 
 ---
