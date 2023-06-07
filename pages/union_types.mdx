@@ -1,9 +1,12 @@
 # Union Types
 
+When a value can be more than one type, use union types.
+
 ## Union with or |
 
 ```ts copy
 function logStatusCode(code: string | number) {
+	// type | type
 	console.log(`Status code: ${code}.`);
 }
 logStatusCode(404);
