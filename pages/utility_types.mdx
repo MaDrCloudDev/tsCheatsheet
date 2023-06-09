@@ -1,6 +1,10 @@
 # Utility Types
 
-## Partial - makes all properties in an object optional
+Types built into TypeScript that help with common type manipulation.
+
+## Partial
+
+Makes all properties in an object optional.
 
 ```ts copy
 interface Coords {
@@ -8,12 +12,14 @@ interface Coords {
 	y: number;
 }
 
-let coordsPart: Partial<Coords> = {}; // `Partial` allows x and y to
-// be optional
+let coordsPart: Partial<Coords> = {}; // `Partial` allows x
+// and y to be optional
 coordsPart.x = 10;
 ```
 
-## Required - makes all properties in an object required
+## Required
+
+Makes all properties in an object required.
 
 ```ts copy
 interface Vehicle {
@@ -29,17 +35,21 @@ let myCar: Required<Vehicle> = {
 };
 ```
 
-## Record - creates an object type whose property keys are Keys and whose property values are Type
+## Record
+
+Creates an object type whose property keys are Keys and whose property values are Type.
 
 ```ts copy
 const ageNameMap: Record<string, number> = {
 	Matt: 20,
 	Michael: 24,
 };
-//`Record<string, number>` is equivalent to `{ [key: string]: number }`
+//`Record<string, number>` is the same as `{ [key: string]: number }`
 ```
 
-## Omit - constructs a type by picking all properties from Type and then removing Keys
+## Omit
+
+Constructs a type by picking all properties from Type and then removing Keys.
 
 ```ts copy
 interface Employee {
@@ -54,7 +64,9 @@ const matt: Omit<Employee, 'age' | 'location'> = {
 };
 ```
 
-## Pick - constructs a type by picking the set of properties Keys from Type (the opposite of `Omit`)
+## Pick
+
+Constructs a type by picking the set of properties Keys from Type (the opposite of `Omit`).
 
 ```ts copy
 const Michael: Pick<Employee, 'name'> = {
