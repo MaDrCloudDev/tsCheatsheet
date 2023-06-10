@@ -49,7 +49,7 @@ const ageNameMap: Record<string, number> = {
 
 ## Omit
 
-Constructs a type by picking all properties from Type and then removing Keys.
+From an object type., remove keys.
 
 ```ts copy
 interface Employee {
@@ -66,7 +66,7 @@ const matt: Omit<Employee, 'age' | 'location'> = {
 
 ## Pick
 
-Constructs a type by picking the set of properties Keys from Type (the opposite of `Omit`).
+Removes all keys, except those speficied (the opposite of `Omit`).
 
 ```ts copy
 const Michael: Pick<Employee, 'name'> = {
@@ -75,14 +75,21 @@ const Michael: Pick<Employee, 'name'> = {
 };
 ```
 
-## Exclude - removes types from a union
+## Exclude
+
+Removes types from a union.
 
 ```ts copy
 type Primitive = string | number | boolean;
 const value3: Exclude<Primitive, string> = true; // a string cannot
-// be used here since Exclude removed it from the type.
+// be used since Exclude removed it from the type.
+```
 
-// return type - extracts return type from a function type
+## Return type
+
+Extracts return type from function type.
+
+```ts copy
 type CoordGenerator = () => { x: number; y: number };
 const coord: ReturnType<CoordGenerator> = {
 	x: 10,
@@ -90,7 +97,9 @@ const coord: ReturnType<CoordGenerator> = {
 };
 ```
 
-## Parameters - extracts the parameters of a function type (as an array)
+## Parameters
+
+Extracts the parameters types from a function (as an array).
 
 ```ts copy
 type CoordPrinter = (p: { x: number; y: number }) => void;
@@ -99,3 +108,5 @@ const coord2: Parameters<CoordPrinter>[0] = {
 	y: 20,
 };
 ```
+
+---
