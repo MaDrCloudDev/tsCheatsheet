@@ -1,5 +1,7 @@
 ## Arrays
 
+TypeScript syntax for typing arrays.
+
 ```ts copy
 const names: string[] = [];
 names.push('Matt'); // no error
@@ -10,6 +12,8 @@ names.push(3); // Error: Argument of type 'number'
 
 ## Readonly
 
+Prevents arrays from being modified.
+
 ```ts copy
 const names: readonly string[] = ['Matt'];
 names.push('Michael'); // Error: Property 'push' does
@@ -17,6 +21,8 @@ names.push('Michael'); // Error: Property 'push' does
 ```
 
 ## Type Inference
+
+Type can be inferred from the array's initial value.
 
 ```ts copy
 const numbers = [1, 2, 3]; // inferred type = number[]
