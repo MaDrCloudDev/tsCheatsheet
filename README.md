@@ -1,4 +1,4 @@
-# [typeScriptCheatsheet](https://tscheatsheet.vercel.app)
+# [typeScriptCheatsheet](https://tscheatsheet.madr.io)
 
 Making this public in case anyone else can make use of it.
 
