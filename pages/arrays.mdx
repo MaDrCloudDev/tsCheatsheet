@@ -3,10 +3,12 @@
 TypeScript syntax for typing arrays.
 
 ```ts copy
-const names: string[] = [];
-names.push('Matt'); // no error
+const employees: string[] = [];
 
-names.push(3); // Error: Argument of type 'number'
+employees.push('Matt'); // no error because employees is a
+// string array.
+
+employees.push(3); // Error: Argument of type 'number'
 // is not assignable to parameter of type 'string'.
 ```
 
@@ -15,8 +17,9 @@ names.push(3); // Error: Argument of type 'number'
 Prevents arrays from being modified.
 
 ```ts copy
-const names: readonly string[] = ['Matt'];
-names.push('Michael'); // Error: Property 'push' does
+const employees: readonly string[] = ['Matt'];
+
+employees.push('Michael'); // Error: Property 'push' does
 // not exist on type 'readonly string[]'.
 ```
 
@@ -25,11 +28,11 @@ names.push('Michael'); // Error: Property 'push' does
 Type can be inferred from the array's initial value.
 
 ```ts copy
-const numbers = [1, 2, 3]; // inferred type = number[]
+const employeeIds = [1, 2, 3]; // inferred type = number[]
 
-numbers.push(4); // no error, pushing a number
+employeeIds.push(4); // no error, pushing a number
 
-numbers.push('4'); // Error: Argument of type 'string' is
+employeeIds.push('4'); // Error: Argument of type 'string' is
 // not assignable to parameter of type 'number'.
 ```
 
