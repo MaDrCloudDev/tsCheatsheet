@@ -1,20 +1,25 @@
 ## Casting Types
 
-Casting overrides the variable type
+Casting overrides the variable type, which you may want to do when you know more about the type than the compiler does.
 
 ## Casting using as
 
 ```ts copy
 let a: unknown = 'Hello World!';
-console.log((a as string).length);
+
+console.log(a.length);
+// Property 'length' does not exist on type 'unknown'.
+console.log((a as string).length); // Works because now
+// the compiler sees it as a string.
 ```
 
-Casting doesn't really change type, it tells the compiler to treat it as a different type
+Casting doesn't really change type, it tells the compiler to treat it as a different type.
 
 ```ts copy
-let a2: unknown = 3;
-console.log((a2 as string).length); // logs undefined
-// because numbers don't have a length
+let a: unknown = 3;
+
+console.log((a as string).length); // logs undefined
+// because numbers don't have a length.
 ```
 
 ## TypeScript Typechecks Casts
@@ -29,21 +34,23 @@ console.log((3 as string).length); // Error: Conversion
 
 ## Casting using &lt;&gt;
 
-_Note:_ doesn't work in TSX
+_Note:_ doesn't work in TSX.
 
 ```ts copy
-let a3: unknown = 'Hello World!';
-console.log((<string>a3).length);
+let a: unknown = 'Hello World!';
+
+console.log((<string>a).length); // Works.
 ```
 
 ## Forced casting
 
-You can force cast to any type by casting to unknown, then to the type you want
+You can force cast to any type by casting to unknown, then to the type you want. This will override any errors thrown by casting.
 
 ```ts copy
-let a4 = 'Hello World!';
-console.log((a4 as unknown as number).length); // a is not
-// really a number so returns undefined
+let a = 'Hello World!';
+// prettier-ignore
+console.log(((a as unknown) as number).length); // a is not
+// really a number so returns undefined.
 ```
 
 ---
