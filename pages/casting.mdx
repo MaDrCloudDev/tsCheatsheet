@@ -13,6 +13,24 @@ console.log((a as string).length); // Works because now
 // the compiler sees it as a string.
 ```
 
+An example that might make more sense.
+
+```ts copy
+let a: unknown = 'Hello World!';
+
+function any() {
+	let aAsAny = a as any;
+	console.log(a.length); // returns error TS2339: Property
+	// 'length' does not exist on type 'unknown' because
+	// .length doesn't exist on unknown.
+	console.log(aAsAny.length); // returns 12 because we've
+	// cast a to any, so we can use .length, treating it like
+	// it were a string.
+}
+
+any(); // function call
+```
+
 Casting doesn't really change type, it tells the compiler to treat it as a different type.
 
 ```ts copy
