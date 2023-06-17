@@ -4,14 +4,16 @@
 
 ```ts copy
 class Pet {
-	name: string; // property
+	name: string; // property.
 }
 
 const pet = new Pet();
 pet.name = 'Mittens';
+
+console.log(pet); // returns Pet { name: 'Mittens' }.
 ```
 
-## Member Visibility
+## Member - Visibility
 
 Member properties can be public, private, or protected.
 
@@ -20,7 +22,7 @@ Member properties can be public, private, or protected.
 - Protected members are accessible from within the class and from classes that extend from the class.
 
 ```ts copy
-class Pet2 {
+class Pet {
 	private name: string;
 
 	public constructor(name: string) {
@@ -32,9 +34,10 @@ class Pet2 {
 	}
 }
 
-const pet2 = new Pet2('Snuggles');
-console.log(pet2.getName()); // person.name isn't accessible
-// from outside the class since it's private
+const pet = new Pet('Snuggles');
+
+console.log(pet.getName()); // since pet.name is private,
+// it isn't accessible outside the class.
 ```
 
 ## Parameter Properties
@@ -42,27 +45,28 @@ console.log(pet2.getName()); // person.name isn't accessible
 In TypeScript, you can conveniently define class members in the constructor by adding visibility modifiers to the constructor parameters. This allows you to automatically create and initialize class properties with a concise syntax.
 
 ```ts copy
-class Pet3 {
-	// name is a private member variable
+class Pet {
 	public constructor(private name: string) {}
-
+	// name is a private member variable
 	public getName(): string {
 		return this.name;
 	}
 }
 
-const pet3 = new Pet3('Snowball');
-console.log(pet3.getName()); // logs 'Snowball'
+const pet = new Pet('Snowball');
+console.log(pet.getName()); // logs 'Snowball'
 ```
 
 ## Readonly
 
+Prevents class members from being changed.
+
 ```ts copy
-class Pet4 {
+class Pet {
 	private readonly name: string;
 
 	public constructor(name: string) {
-		// name cannot be changed after this first definition,
+		// name cannot be changed after definition,
 		// which must be at it's declaration or in the constructor.
 		this.name = name;
 	}
@@ -72,8 +76,8 @@ class Pet4 {
 	}
 }
 
-const pet4 = new Pet4('Jingles');
-console.log(pet4.getName());
+const pet = new Pet('Jingles');
+console.log(pet.getName());
 ```
 
 ## Inheritance - implements
@@ -95,7 +99,13 @@ class Rectangle implements Shape {
 		return this.width * this.height;
 	}
 }
+
+const ourRectangle = new Rectangle(11, 22);
+
+console.log(ourRectangle.getArea());
 ```
+
+Classes can implement multiple interfaces.
 
 ## Inheritance - extends (extends Rectangle above)
 
@@ -106,11 +116,27 @@ interface Shape {
 	getArea: () => number;
 }
 
+class Rectangle implements Shape {
+	public constructor(
+		protected readonly width: number,
+		protected readonly height: number
+	) {}
+
+	public getArea(): number {
+		return this.width * this.height;
+	}
+}
+
 class Square extends Rectangle {
 	public constructor(width: number) {
 		super(width, width);
-	} // getArea gets inherited from Rectangle
+	}
+	// inherited from Rectangle.
 }
+
+const ourSquare = new Square(22);
+
+console.log(ourSquare.getArea());
 ```
 
 ## Override
@@ -122,9 +148,8 @@ interface Shape {
 	getArea: () => number;
 }
 
-class Rectangle2 implements Shape {
-	// using protected for these members allows access from
-	// classes that extend from this class, such as Square
+class Rectangle implements Shape {
+	// using protected for these members allows access from classes that extend from this class, such as Square
 	public constructor(
 		protected readonly width: number,
 		protected readonly height: number
@@ -139,16 +164,23 @@ class Rectangle2 implements Shape {
 	}
 }
 
-class Square2 extends Rectangle2 {
+class Square extends Rectangle {
 	public constructor(width: number) {
 		super(width, width);
-	} // this toString replaces the toString from Rectangle
+	}
 
+	// Replaces earlier toString from Rectangle
 	public override toString(): string {
 		return `Square[width=${this.width}]`;
 	}
 }
+
+const ourSquare = new Square(22);
+
+console.log(ourSquare.toString());
 ```
+
+Override keyword is optional, but it's good practice to use it.
 
 ## Abstract Classes
 
@@ -163,7 +195,7 @@ abstract class Polygon {
 	}
 }
 
-class Rectangle3 extends Polygon {
+class Rectangle extends Polygon {
 	public constructor(
 		protected readonly width: number,
 		protected readonly height: number
@@ -175,6 +207,10 @@ class Rectangle3 extends Polygon {
 		return this.width * this.height;
 	}
 }
+
+const ourRectangle = new Rectangle(10, 20);
+
+console.log(ourRectangle.getArea());
 ```
 
 ---
