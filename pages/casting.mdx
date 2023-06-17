@@ -19,13 +19,12 @@ An example that might make more sense.
 let a: unknown = 'Hello World!';
 
 function any() {
-	let aAsAny = a as any;
+	let aAsString = a as string;
 	console.log(a.length); // returns error TS2339: Property
 	// 'length' does not exist on type 'unknown' because
 	// .length doesn't exist on unknown.
-	console.log(aAsAny.length); // returns 12 because we've
-	// cast a to any, so we can use .length, treating it like
-	// it were a string.
+	console.log(aAsString.length); // returns 12 because we've
+	// cast a to string, so .length method works
 }
 
 any(); // function call
