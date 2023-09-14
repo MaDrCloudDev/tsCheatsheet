@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://tscheatsheet.madr.io/sitemap-index.xml
