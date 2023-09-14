@@ -2,12 +2,12 @@
 
 Making this public in case anyone else can make use of it.
 
-| Links                                                                        |                                                                |                                                                              |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [Arrays](https://tscheatsheet.vercel.app/arrays)                             | [Casting](https://tscheatsheet.vercel.app/casting)             | [Classes](https://tscheatsheet.vercel.app/classes)                           |
-| [Enums](https://tscheatsheet.vercel.app/enums)                               | [Functions](https://tscheatsheet.vercel.app/functions)         | [Generics](https://tscheatsheet.vercel.app/generics)                         |
-| [Interfaces & Aliases](https://tscheatsheet.vercel.app/interfaces_&_aliases) | [Keyof](https://tscheatsheet.vercel.app/keyof)                 | [Null](https://tscheatsheet.vercel.app/null)                                 |
-| [Object Types](https://tscheatsheet.vercel.app/object_types)                 | [Tuples](https://tscheatsheet.vercel.app/tuples)               | [Types](https://tscheatsheet.vercel.app/types)                               |
-| [Union Types](https://tscheatsheet.vercel.app/union_types)                   | [Utility Types](https://tscheatsheet.vercel.app/utility_types) | [TypeScript Vs Rust](https://tscheatsheet.vercel.app/TypeScript_VS_Rust/add) |
+| Links                                                                                  |                                                                        |                                                                    |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| [Arrays](https://tscheatsheet.madr.io/typescript/arrays)                               | [Casting](https://tscheatsheet.madr.io/typescript/casting)             | [Classes](https://tscheatsheet.madr.io/typescript/classes)         |
+| [Enums](https://tscheatsheet.madr.io/typescript/enums)                                 | [Functions](https://tscheatsheet.madr.io/typescript/functions)         | [Generics](https://tscheatsheet.madr.io/typescript/generics)       |
+| [Interfaces & Aliases](https://tscheatsheet.madr.io/typescript/interfaces_and_aliases) | [Keyof](https://tscheatsheet.madr.io/typescript/keyof)                 | [Null](https://tscheatsheet.madr.io/typescript/null_and_undefined) |
+| [Object Types](https://tscheatsheet.madr.io/typescript/object_types)                   | [Tuples](https://tscheatsheet.madr.io/typescript/tuples)               | [Types](https://tscheatsheet.madr.io/typescript/types)             |
+| [Union Types](https://tscheatsheet.madr.io/typescript/union_types)                     | [Utility Types](https://tscheatsheet.madr.io/typescript/utility_types) |
 
 **work in progress...**
