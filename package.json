@@ -1,31 +1,16 @@
 {
-	"name": "typescriptcheatsheet-markdown-madrclouddev",
-	"version": "0.0.1",
-	"description": "TypeScript Cheatsheet",
-	"author": "MadrCloudDev",
-	"license": "MIT",
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/shuding/nextra-docs-template.git"
-	},
-	"bugs": {
-		"url": "https://github.com/shuding/nextra-docs-template/issues"
-	},
-	"homepage": "https://github.com/shuding/nextra-docs-template#readme",
-	"dependencies": {
-		"next": "^13.0.6",
-		"nextra": "latest",
-		"nextra-theme-docs": "latest",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
-	},
-	"devDependencies": {
-		"@types/node": "18.11.10",
-		"typescript": "^4.9.3"
-	}
+  "name": "docs-test",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.9.1",
+    "astro": "^3.0.6"
+  }
 }
