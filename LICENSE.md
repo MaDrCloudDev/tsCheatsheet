@@ -1,6 +1,6 @@
 MIT License
 
-Built using the Astro [Starlight](https://starlight.astro.build/) template.
+Copyright (c) 2023 [Astro contributors](https://github.com/withastro/starlight/graphs/contributors)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
