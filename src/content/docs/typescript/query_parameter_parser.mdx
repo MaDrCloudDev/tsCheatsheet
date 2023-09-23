@@ -1,0 +1,46 @@
+---
+title: Query Parameter Parser
+description: TypeScript Query Parameter Parser.
+---
+
+A `query parameter parser` is a piece of code or a function that extracts and organizes key-value pairs from the query string of a URL. In a URL, the query string is the part that follows the question mark (?), and it typically contains additional information or parameters used by a web application. The parser takes a URL as input and processes the query string, separating the parameters into individual keys and their corresponding values. This parsed information is then usually returned as an object or data structure that can be easily used by the program.
+
+```ts copy
+/**
+ * Parses query parameters from a URL and returns them as an object.
+ * @param url - The URL containing query parameters.
+ * @returns An object containing the parsed query parameters.
+ */
+function parseQueryParameters(url: string): Record<string, string> {
+	// Step 1: Extract the query string part of the URL
+	const queryString = url.split('?')[1];
+
+	// Step 2: If there's no query string, return an empty object
+	if (!queryString) {
+		return {};
+	}
+
+	// Step 3: Parse the query string into key-value pairs
+	const params = new URLSearchParams(queryString);
+
+	// Step 4: Initialize an empty object to store the result
+	const result: Record<string, string> = {};
+
+	// Step 5: Iterate through the key-value pairs and construct the result object
+	for (const [key, value] of params.entries()) {
+		result[key] = value;
+	}
+
+	// Step 6: Return the result object
+	return result;
+}
+
+// Example usage:
+const url = 'https://example.com/page?param1=value1&param2=value2';
+const params = parseQueryParameters(url);
+
+// Output: { param1: "value1", param2: "value2" }
+console.log(params);
+```
+
+---

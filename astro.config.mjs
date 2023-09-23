@@ -64,6 +64,10 @@ export default defineConfig({
 							link: '/typescript/object_types',
 						},
 						{
+							label: 'Query Parameter Parser',
+							link: '/typescript/query_parameter_parser',
+						},
+						{
 							label: 'Tuples',
 							link: '/typescript/tuples',
 						},
