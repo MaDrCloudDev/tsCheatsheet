@@ -2,6 +2,12 @@
 
 Making this public in case anyone else can make use of it.
 
+```
+npm i
+npm run dev
+npm run build
+```
+
 | Links                                                                                  |                                                                        |                                                                    |
 | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [Arrays](https://tscheatsheet.madr.io/typescript/arrays)                               | [Casting](https://tscheatsheet.madr.io/typescript/casting)             | [Classes](https://tscheatsheet.madr.io/typescript/classes)         |
