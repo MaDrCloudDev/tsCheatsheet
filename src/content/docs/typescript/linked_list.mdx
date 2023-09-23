@@ -1,0 +1,62 @@
+---
+title: Linked List
+description: TypeScript Linked List.
+---
+
+Coming from webdev and JavaScript, I struggle with OOP and data structures like `linked lists`, so I'm adding this section.
+
+A `linked list` is a way of organizing data in a linear sequence. It's made up of nodes, where each node holds some information and a link to the next node. Unlike arrays, linked lists don't require contiguous memory locations, allowing for efficient insertion and deletion of elements. The first node is called the "head", and to find a specific node, you start at the head and follow the links. There are different types of `linked lists`, including singly `linked lists` (which only point to the next node), doubly linked lists (which point to both the next and previous nodes), and circular `linked lists` (where the last node points back to the first).
+
+```ts copy
+class Node<T> {
+	data: T;
+	next: Node<T> | null;
+
+	constructor(data: T) {
+		this.data = data;
+		this.next = null;
+	}
+}
+
+class LinkedList<T> {
+	head: Node<T> | null;
+
+	constructor() {
+		this.head = null;
+	}
+
+	insert(data: T) {
+		const newNode = new Node(data);
+
+		if (!this.head) {
+			this.head = newNode;
+		} else {
+			let current = this.head;
+			while (current.next) {
+				current = current.next;
+			}
+			current.next = newNode;
+		}
+	}
+
+	display() {
+		let current = this.head;
+		while (current) {
+			console.log(current.data);
+			current = current.next;
+		}
+	}
+}
+
+// Example usage:
+
+const linkedList = new LinkedList<number>();
+
+linkedList.insert(10);
+linkedList.insert(20);
+linkedList.insert(30);
+
+linkedList.display();
+```
+
+---

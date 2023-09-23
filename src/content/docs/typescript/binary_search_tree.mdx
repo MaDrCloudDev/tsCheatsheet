@@ -1,0 +1,89 @@
+---
+title: Binary Search Tree
+description: TypeScript Binary Search Tree.
+---
+
+Coming from webdev and JavaScript, I struggle with OOP and data structures like `binary search trees`, so I'm adding this section.
+
+A `binary search tree` (BST) is a hierarchical data structure where each node has a value, a left child, and a right child. The left child's value is always less than its parent, and the right child's value is greater or equal to the parent's value. Binary search is a method used to find a specific value in a BST. It starts at the root node and compares the target value with the current node's value. Depending on the comparison, the search moves to the left or right child, continuing recursively until the target value is found or there are no more nodes to explore.
+
+```ts copy
+class Node {
+	value: number;
+	left: Node | null;
+	right: Node | null;
+
+	constructor(value: number) {
+		this.value = value;
+		this.left = null;
+		this.right = null;
+	}
+}
+
+class BinarySearchTree {
+	root: Node | null;
+
+	constructor() {
+		this.root = null;
+	}
+
+	insert(value: number): BinarySearchTree {
+		const newNode = new Node(value);
+
+		if (!this.root) {
+			this.root = newNode;
+			return this;
+		}
+
+		let current: Node | null = this.root;
+
+		while (true) {
+			if (value === current!.value) return this;
+			if (value < current!.value) {
+				if (!current!.left) {
+					current!.left = newNode;
+					return this;
+				}
+				current = current!.left;
+			} else {
+				if (!current!.right) {
+					current!.right = newNode;
+					return this;
+				}
+				current = current!.right;
+			}
+		}
+	}
+
+	search(value: number): Node | null {
+		let current: Node | null = this.root;
+
+		while (current) {
+			if (value === current!.value) return current;
+			if (value < current!.value) {
+				current = current!.left;
+			} else {
+				current = current!.right;
+			}
+		}
+
+		return null;
+	}
+}
+
+// Example usage:
+
+const bst = new BinarySearchTree();
+bst.insert(10);
+bst.insert(5);
+bst.insert(15);
+bst.insert(3);
+bst.insert(7);
+bst.insert(12);
+bst.insert(17);
+
+console.log(bst.search(7)); // Output: Node { value: 7, left: Node { value: 3, left: null, right: null }, right: Node { value: 7, left: null, right: null } }
+console.log(bst.search(11)); // Output: null
+```
+
+---
