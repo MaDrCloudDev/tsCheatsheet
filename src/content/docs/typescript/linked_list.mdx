@@ -8,55 +8,59 @@ Coming from webdev and JavaScript, I struggle with OOP and data structures like 
 A `linked list` is a way of organizing data in a linear sequence. It's made up of nodes, where each node holds some information and a link to the next node. Unlike arrays, linked lists don't require contiguous memory locations, allowing for efficient insertion and deletion of elements. The first node is called the "head", and to find a specific node, you start at the head and follow the links. There are different types of `linked lists`, including singly `linked lists` (which only point to the next node), doubly linked lists (which point to both the next and previous nodes), and circular `linked lists` (where the last node points back to the first).
 
 ```ts copy
-class Node<T> {
-	data: T;
-	next: Node<T> | null;
+class Node {
+	item: string;
+	quantity: number;
+	next: Node | null;
 
-	constructor(data: T) {
-		this.data = data;
-		this.next = null;
+	constructor(item: string, quantity: number, next: Node | null = null) {
+		this.item = item;
+		this.quantity = quantity;
+		this.next = next;
 	}
 }
 
-class LinkedList<T> {
-	head: Node<T> | null;
+class LinkedList {
+	head: Node | null;
 
 	constructor() {
 		this.head = null;
 	}
 
-	insert(data: T) {
-		const newNode = new Node(data);
-
+	addItem(item: string, quantity: number): void {
+		const newNode = new Node(item, quantity);
 		if (!this.head) {
 			this.head = newNode;
 		} else {
-			let current = this.head;
-			while (current.next) {
+			let current: Node | null = this.head;
+			while (current && current.next) {
 				current = current.next;
 			}
-			current.next = newNode;
+			if (current) {
+				current.next = newNode;
+			}
 		}
 	}
 
-	display() {
-		let current = this.head;
+	getTotalQuantity(): number {
+		let total = 0;
+		let current: Node | null = this.head;
 		while (current) {
-			console.log(current.data);
+			total += current.quantity;
 			current = current.next;
 		}
+		return total;
 	}
 }
 
-// Example usage:
+// Usage example
+const shoppingList = new LinkedList();
+shoppingList.addItem('Apples', 5);
+shoppingList.addItem('Bananas', 3);
+shoppingList.addItem('Oranges', 4);
 
-const linkedList = new LinkedList<number>();
-
-linkedList.insert(10);
-linkedList.insert(20);
-linkedList.insert(30);
-
-linkedList.display();
+const totalQuantity = shoppingList.getTotalQuantity();
+console.log(`Total quantity of items: ${totalQuantity}`);
 ```
 
 ---
