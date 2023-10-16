@@ -63,4 +63,33 @@ const totalQuantity = shoppingList.getTotalQuantity();
 console.log(`Total quantity of items: ${totalQuantity}`);
 ```
 
+Implementation of a shopping list without using a linked list or OOP, for reference:
+
+```ts copy
+type ShoppingItem = {
+	item: string;
+	quantity: number;
+};
+
+type ShoppingList = ShoppingItem[];
+
+function addItem(list: ShoppingList, item: string, quantity: number): void {
+	list.push({ item, quantity });
+}
+
+function getTotalQuantity(list: ShoppingList): number {
+	return list.reduce((total, item) => total + item.quantity, 0);
+}
+
+// Usage example
+const shoppingList: ShoppingList = [];
+
+addItem(shoppingList, 'Apples', 5);
+addItem(shoppingList, 'Bananas', 3);
+addItem(shoppingList, 'Oranges', 4);
+
+const totalQuantity = getTotalQuantity(shoppingList);
+console.log(`Total quantity of items: ${totalQuantity}`);
+```
+
 ---
