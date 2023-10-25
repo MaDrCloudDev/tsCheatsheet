@@ -20,6 +20,10 @@ export default defineConfig({
 							link: '/typescript/arrays',
 						},
 						{
+							label: 'Async Without Promise',
+							link: '/typescript/async_without_promise',
+						},
+						{
 							label: 'Binary Search Tree',
 							link: '/typescript/binary_search_tree',
 						},

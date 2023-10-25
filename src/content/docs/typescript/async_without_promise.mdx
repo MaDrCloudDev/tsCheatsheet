@@ -1,0 +1,38 @@
+---
+title: Async Without Promise
+description: TypeScript Async without promise.
+---
+
+```ts copy
+function doAsyncTask(callback: () => void): void {
+	setTimeout(() => {
+		console.log('Async task done');
+		callback();
+	}, 1000);
+}
+
+function onComplete(): void {
+	console.log('Callback executed');
+}
+
+doAsyncTask(onComplete);
+```
+
+Version WITH promise:
+
+```ts copy
+function doAsyncTask(): Promise<void> {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			console.log('Async task done');
+			resolve();
+		}, 1000);
+	});
+}
+
+function onComplete(): void {
+	console.log('Promise resolved');
+}
+
+doAsyncTask().then(onComplete);
+```
