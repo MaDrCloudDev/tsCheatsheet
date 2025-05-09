@@ -1,0 +1,39 @@
+---
+title: Set
+description: Simple implementation of Set in TypeScript.
+---
+
+```ts copy
+class CustomSet {
+  private items: { [key: string]: boolean };
+
+  constructor() {
+    this.items = {};
+  }
+
+  // Add an element
+  add(value: string): void {
+    this.items[value] = true;
+  }
+
+  // Check if an element exists
+  has(value: string): boolean {
+    return this.items[value] === true;
+  }
+
+  // Remove an element
+  remove(value: string): void {
+    delete this.items[value];
+  }
+}
+
+const set = new CustomSet();
+set.add("apple");
+set.add("banana");
+console.log(set.has("apple")); // Output: true
+console.log(set.has("orange")); // Output: false
+set.remove("apple");
+console.log(set.has("apple")); // Output: false
+```
+
+---

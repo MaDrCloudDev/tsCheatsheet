@@ -1,0 +1,43 @@
+---
+title: Double-ended Queue
+description: Simple implementation of Double-ended Queue in TypeScript.
+---
+
+```ts copy
+class Deque {
+  private items: number[];
+
+  constructor() {
+    this.items = [];
+  }
+
+  // Add to front
+  addFront(item: number): void {
+    this.items.unshift(item);
+  }
+
+  // Add to back
+  addBack(item: number): void {
+    this.items.push(item);
+  }
+
+  // Remove from front
+  removeFront(): number | undefined {
+    return this.items.shift();
+  }
+
+  // Remove from back
+  removeBack(): number | undefined {
+    return this.items.pop();
+  }
+}
+
+const deque = new Deque();
+deque.addBack(1); // [1]
+deque.addFront(2); // [2, 1]
+deque.addBack(3); // [2, 1, 3]
+console.log(deque.removeFront()); // Output: 2  (now [1, 3])
+console.log(deque.removeBack()); // Output: 3  (now [1])
+```
+
+---

@@ -1,5 +1,5 @@
 {
-  "name": "docs-test",
+  "name": "tscheatsheet-update",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.9.1",
-    "astro": "^3.0.6"
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/starlight": "^0.34.3",
+    "astro": "^5.6.1"
   }
 }

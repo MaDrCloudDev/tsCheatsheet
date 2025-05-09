@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tscheatsheet.madr.io/sitemap-index.xml

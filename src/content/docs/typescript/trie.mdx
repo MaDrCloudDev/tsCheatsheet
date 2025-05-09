@@ -1,0 +1,57 @@
+---
+title: Trie
+description: Simple implementation of Trie in TypeScript.
+---
+
+```ts copy
+class TrieNode {
+  children: { [key: string]: TrieNode };
+  isEnd: boolean;
+
+  constructor() {
+    this.children = {};
+    this.isEnd = false;
+  }
+}
+
+class Trie {
+  root: TrieNode;
+
+  constructor() {
+    this.root = new TrieNode();
+  }
+
+  // Insert a word
+  insert(word: string): void {
+    let node = this.root;
+    for (const char of word) {
+      if (!node.children[char]) {
+        node.children[char] = new TrieNode();
+      }
+      node = node.children[char];
+    }
+    node.isEnd = true;
+  }
+
+  // Search for a word
+  search(word: string): boolean {
+    let node = this.root;
+    for (const char of word) {
+      if (!node.children[char]) {
+        return false;
+      }
+      node = node.children[char];
+    }
+    return node.isEnd;
+  }
+}
+
+const trie = new Trie();
+trie.insert("cat");
+trie.insert("car");
+console.log(trie.search("cat")); // Output: true
+console.log(trie.search("car")); // Output: true
+console.log(trie.search("cap")); // Output: false
+```
+
+---

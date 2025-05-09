@@ -1,95 +1,54 @@
 ---
 title: Linked List
-description: TypeScript Linked List.
+description: Simple implementation of Linked List in TypeScript.
 ---
-
-Coming from webdev and JavaScript, I struggle with OOP and data structures like `linked lists`, so I'm adding this section.
-
-A `linked list` is a way of organizing data in a linear sequence. It's made up of nodes, where each node holds some information and a link to the next node. Unlike arrays, linked lists don't require contiguous memory locations, allowing for efficient insertion and deletion of elements. The first node is called the "head", and to find a specific node, you start at the head and follow the links. There are different types of `linked lists`, including singly `linked lists` (which only point to the next node), doubly linked lists (which point to both the next and previous nodes), and circular `linked lists` (where the last node points back to the first).
 
 ```ts copy
 class Node {
-	item: string;
-	quantity: number;
-	next: Node | null;
+  data: number;
+  next: Node | null;
 
-	constructor(item: string, quantity: number, next: Node | null = null) {
-		this.item = item;
-		this.quantity = quantity;
-		this.next = next;
-	}
+  constructor(data: number) {
+    this.data = data;
+    this.next = null;
+  }
 }
 
 class LinkedList {
-	head: Node | null;
+  head: Node | null;
 
-	constructor() {
-		this.head = null;
-	}
+  constructor() {
+    this.head = null;
+  }
 
-	addItem(item: string, quantity: number): void {
-		const newNode = new Node(item, quantity);
-		if (!this.head) {
-			this.head = newNode;
-		} else {
-			let current: Node | null = this.head;
-			while (current && current.next) {
-				current = current.next;
-			}
-			if (current) {
-				current.next = newNode;
-			}
-		}
-	}
+  // Add to end
+  append(data: number): void {
+    const newNode = new Node(data);
 
-	getTotalQuantity(): number {
-		let total = 0;
-		let current: Node | null = this.head;
-		while (current) {
-			total += current.quantity;
-			current = current.next;
-		}
-		return total;
-	}
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  // Print list
+  print(): void {
+    let current = this.head;
+    const values: number[] = [];
+
+    while (current) {
+      values.push(current.data);
+      current = current.next;
+    }
+    console.log(values.join(" -> "));
+  }
 }
-
-// Usage example
-const shoppingList = new LinkedList();
-shoppingList.addItem('Apples', 5);
-shoppingList.addItem('Bananas', 3);
-shoppingList.addItem('Oranges', 4);
-
-const totalQuantity = shoppingList.getTotalQuantity();
-console.log(`Total quantity of items: ${totalQuantity}`);
-```
-
-Implementation of a shopping list without using a linked list or OOP, for reference:
-
-```ts copy
-type ShoppingItem = {
-	item: string;
-	quantity: number;
-};
-
-type ShoppingList = ShoppingItem[];
-
-function addItem(list: ShoppingList, item: string, quantity: number): void {
-	list.push({ item, quantity });
-}
-
-function getTotalQuantity(list: ShoppingList): number {
-	return list.reduce((total, item) => total + item.quantity, 0);
-}
-
-// Usage example
-const shoppingList: ShoppingList = [];
-
-addItem(shoppingList, 'Apples', 5);
-addItem(shoppingList, 'Bananas', 3);
-addItem(shoppingList, 'Oranges', 4);
-
-const totalQuantity = getTotalQuantity(shoppingList);
-console.log(`Total quantity of items: ${totalQuantity}`);
 ```
 
 ---

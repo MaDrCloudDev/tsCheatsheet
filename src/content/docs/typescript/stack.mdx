@@ -1,0 +1,39 @@
+---
+title: Stack
+description: Simple implementation of Stack in TypeScript.
+---
+
+```ts copy
+class Stack {
+  private items: number[];
+
+  constructor() {
+    this.items = [];
+  }
+
+  // Add an element to the top
+  push(item: number): void {
+    this.items.push(item);
+  }
+
+  // Remove and return the top element
+  pop(): number | undefined {
+    return this.items.pop();
+  }
+
+  // Return the top element without removing it
+  peek(): number | undefined {
+    return this.items[this.items.length - 1];
+  }
+}
+
+const stack = new Stack();
+stack.push(1);
+stack.push(2);
+console.log(stack.peek()); // Output: 2
+console.log(stack.pop()); // Output: 2
+console.log(stack.pop()); // Output: 1
+console.log(stack.pop()); // Output: undefined
+```
+
+---

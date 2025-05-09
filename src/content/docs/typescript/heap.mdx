@@ -1,0 +1,77 @@
+---
+title: Heap
+description: Simple implementation of Heap in TypeScript.
+---
+
+```ts copy
+class MinHeap {
+  items: number[];
+
+  constructor() {
+    this.items = [];
+  }
+
+  // Add item and bubble up
+  insert(value: number): void {
+    this.items.push(value);
+    this.bubbleUp(this.items.length - 1);
+  }
+
+  // Remove and return smallest item
+  extractMin(): number | undefined {
+    if (this.items.length === 0) return undefined;
+    if (this.items.length === 1) return this.items.pop();
+
+    const min = this.items[0];
+    this.items[0] = this.items.pop()!;
+    this.bubbleDown(0);
+    return min;
+  }
+
+  // Helper: bubble up to maintain heap property
+  private bubbleUp(index: number): void {
+    const parent = Math.floor((index - 1) / 2);
+    if (index > 0 && this.items[index]! < this.items[parent]!) {
+      [this.items[index]!, this.items[parent]!] = [
+        this.items[parent]!,
+        this.items[index]!,
+      ];
+      this.bubbleUp(parent);
+    }
+  }
+
+  // Helper: bubble down to maintain heap property
+  private bubbleDown(index: number): void {
+    const left = 2 * index + 1;
+    const right = 2 * index + 2;
+    let smallest = index;
+
+    if (left < this.items.length && this.items[left]! < this.items[smallest]!) {
+      smallest = left;
+    }
+    if (
+      right < this.items.length &&
+      this.items[right]! < this.items[smallest]!
+    ) {
+      smallest = right;
+    }
+
+    if (smallest !== index) {
+      [this.items[index]!, this.items[smallest]!] = [
+        this.items[smallest]!,
+        this.items[index]!,
+      ];
+      this.bubbleDown(smallest);
+    }
+  }
+}
+
+const heap = new MinHeap();
+heap.insert(3);
+heap.insert(1);
+heap.insert(4);
+console.log(heap.extractMin()); // Output: 1
+console.log(heap.extractMin()); // Output: 3
+```
+
+---

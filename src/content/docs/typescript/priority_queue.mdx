@@ -1,0 +1,85 @@
+---
+title: Priority Queue
+description: Simple implementation of Priority Queue in TypeScript.
+---
+
+```ts copy
+class PriorityQueue {
+  private items: { value: any; priority: number }[];
+
+  constructor() {
+    this.items = [];
+  }
+
+  // Add item with priority
+  enqueue(value: any, priority: number): void {
+    this.items.push({ value, priority });
+    this.bubbleUp(this.items.length - 1);
+  }
+
+  // Remove and return highest priority item
+  dequeue(): any | undefined {
+    if (this.items.length === 0) return undefined;
+    if (this.items.length === 1) return this.items.pop()!.value;
+
+    const min = this.items[0]!.value;
+    this.items[0] = this.items.pop() as { value: any; priority: number };
+    this.bubbleDown(0);
+    return min;
+  }
+
+  // Helper: bubble up to maintain heap property
+  private bubbleUp(index: number): void {
+    const parent = Math.floor((index - 1) / 2);
+    if (
+      index > 0 &&
+      this.items[index]!.priority < this.items[parent]!.priority
+    ) {
+      if (this.items[index] && this.items[parent]) {
+        [this.items[index], this.items[parent]] = [
+          this.items[parent],
+          this.items[index],
+        ];
+      }
+      this.bubbleUp(parent);
+    }
+  }
+
+  // Helper: bubble down to maintain heap property
+  private bubbleDown(index: number): void {
+    const left = 2 * index + 1;
+    const right = 2 * index + 2;
+    let smallest = index;
+
+    if (
+      left < this.items.length &&
+      this.items[left]!.priority < this.items[smallest]!.priority
+    ) {
+      smallest = left;
+    }
+    if (
+      right < this.items.length &&
+      this.items[right]!.priority < this.items[smallest]!.priority
+    ) {
+      smallest = right;
+    }
+
+    if (smallest !== index) {
+      [this.items[index]!, this.items[smallest]!] = [
+        this.items[smallest]!,
+        this.items[index]!,
+      ];
+      this.bubbleDown(smallest);
+    }
+  }
+}
+
+const pq = new PriorityQueue();
+pq.enqueue("task1", 2);
+pq.enqueue("task2", 1);
+pq.enqueue("task3", 3);
+console.log(pq.dequeue()); // Output: "task2" (priority 1)
+console.log(pq.dequeue()); // Output: "task1" (priority 2)
+```
+
+---

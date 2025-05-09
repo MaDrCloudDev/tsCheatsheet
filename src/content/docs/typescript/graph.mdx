@@ -1,0 +1,47 @@
+---
+title: Graph
+description: Simple implementation of Graph in TypeScript.
+---
+
+```ts copy
+class Graph {
+  private adjacencyList: Map<string, string[]>;
+
+  constructor() {
+    this.adjacencyList = new Map();
+  }
+
+  // Add a vertex
+  addVertex(vertex: string): void {
+    if (!this.adjacencyList.has(vertex)) {
+      this.adjacencyList.set(vertex, []);
+    }
+  }
+
+  // Add an undirected edge
+  addEdge(vertex1: string, vertex2: string): void {
+    // Ensure vertices exist
+    this.addVertex(vertex1);
+    this.addVertex(vertex2);
+
+    // Add edges (undirected)
+    this.adjacencyList.get(vertex1)!.push(vertex2);
+    this.adjacencyList.get(vertex2)!.push(vertex1);
+  }
+
+  // Check if an edge exists
+  hasEdge(vertex1: string, vertex2: string): boolean {
+    const neighbors = this.adjacencyList.get(vertex1);
+    return neighbors ? neighbors.includes(vertex2) : false;
+  }
+}
+
+const graph = new Graph();
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addEdge("A", "B");
+console.log(graph.hasEdge("A", "B")); // Output: true
+console.log(graph.hasEdge("A", "C")); // Output: false
+```
+
+---
