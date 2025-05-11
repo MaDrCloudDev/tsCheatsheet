@@ -3,9 +3,9 @@
 Making this public in case anyone else can make use of it.
 
 ```
-npm i
-npm run dev
-npm run build
+pnpm i
+pnpm run dev
+pnpm run build
 ```
 
 ### TypeScript Basics
